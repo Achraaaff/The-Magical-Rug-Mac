@@ -44,7 +44,7 @@ jobs:
           test -s 'build/The Magical Rug.app/Contents/Resources/persian.jpg'
           test -s 'build/The Magical Rug.app/Contents/Resources/INSTALL.html'
           codesign --verify --deep --strict 'build/The Magical Rug.app'
-          xcrun lipo -verify_arch x86_64 arm64 'build/The Magical Rug.app/Contents/MacOS/MagicalRug'
+          xcrun lipo 'build/The Magical Rug.app/Contents/MacOS/MagicalRug' -verify_arch x86_64 arm64
           otool -L 'build/The Magical Rug.app/Contents/MacOS/MagicalRug'
       - name: Package drag-to-Applications download
         run: ./scripts/package-macos.sh

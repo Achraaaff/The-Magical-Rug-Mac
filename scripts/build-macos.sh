@@ -25,6 +25,6 @@ else
   codesign --force --timestamp=none --sign - "$app"
 fi
 codesign --verify --deep --strict --verbose=2 "$app"
-xcrun lipo -verify_arch x86_64 arm64 "$app/Contents/MacOS/MagicalRug"
+xcrun lipo "$app/Contents/MacOS/MagicalRug" -verify_arch x86_64 arm64
 plutil -lint "$app/Contents/Info.plist"
 echo "Built and verified universal app: $app"
